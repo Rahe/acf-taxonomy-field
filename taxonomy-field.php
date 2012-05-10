@@ -1,6 +1,6 @@
 <?php
 /*
-* Plugin Name: Advanced Custom Fields - Taxonomy Field add-on
+* Plugin Name: Advanced Custom Fields - Taxonomy Field add-on - Hacked Beapi
 * Plugin URI:  https://github.com/GCX/acf-taxonomy-field
 * Description: This plugin is an add-on for Advanced Custom Fields. It provides a dropdown of taxonomy terms and the ability to map the selected terms to the post.
 * Author:      Brian Zoetewey
@@ -347,8 +347,8 @@ class ACF_Taxonomy_Field extends acf_Field {
 		$term_links = array();
 		foreach( $value as $term_id ) {
 			$term_id = intval( $term_id );
-			$term = get_term( $term_id );
-			$link = get_term_link( $term, $taxonomy );
+			$term = get_term( $term_id, $field[ 'taxonomy' ] );
+			$link = get_term_link( $term, $field[ 'taxonomy' ] );
 			if( !is_wp_error( $link ) )
 				$term_links[] = '<a href="' . $link . '" rel="tag">' . $term->name . '</a>';
 		}
